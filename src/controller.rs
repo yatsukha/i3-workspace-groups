@@ -198,7 +198,7 @@ impl WorkspaceGroupsController {
                 return;
             }
         }
-        let new_workspace_name = {
+        let new_workspace = {
             let groups = self.get_groups();
             match groups.entry(group_name.to_string()) {
                 Entry::Occupied(entry) => {
@@ -211,7 +211,7 @@ impl WorkspaceGroupsController {
                         .filter(|(i, workspace)| workspace.local_number == i + 1)
                         .count()
                         + 1;
-                    CustomWorkspace::new(Some(group), local_number).name
+                    CustomWorkspace::new(Some(group), local_number)
                 }
                 Entry::Vacant(_entry) => {
                     CustomWorkspace::new(
@@ -221,13 +221,16 @@ impl WorkspaceGroupsController {
                         )),
                         1,
                     )
-                    .name
                 }
             }
         };
         self.send_i3_command(&format!(
             "move container to workspace {}",
-            new_workspace_name,
+            new_workspace.name,
+        ));
+        self.send_i3_command(&format!(
+            "workspace {}",
+            new_workspace.name
         ));
     }
 
