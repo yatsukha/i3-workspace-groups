@@ -18,22 +18,13 @@ Port/rewrite of [infokiller/i3-workspace-groups](https://github.com/infokiller/i
 
 Requires [Rofi](https://github.com/DaveDavenport/rofi).
 
-### Prebuilt binaries:
-
-Note: (currently only a binary for Linux-x86_64 is available)
-
-Run the following to download the correct binary for your system from the releases tab into `$CARGO_HOME/bin`, courtesy of [japaric/trust](https://github.com/japaric/trust):
-
-```bash
-bash <(curl -LSfs https://japaric.github.io/trust/install.sh) \
-  -f --git cjbassi/i3-workspace-groups
-```
-
 ### From source:
 
 ```bash
-cargo install --git https://github.com/cjbassi/i3-workspace-groups
+cargo install --git https://github.com/yatsukha/i3-workspace-groups
 ```
+
+If you want to tinker with it I recommend cloning the repo and installing using `cargo install --path .`.
 
 ## Configuration
 
